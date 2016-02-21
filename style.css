@@ -13,15 +13,13 @@ img {
 	display: block;
 	float: left;
 }
-.top {
+img {
 	margin-bottom: 60px;
+	margin-left: 60px;
 }
-.left {
-	margin-right: 60px;
+img:first-child {
+	margin-left: 0;
 }
-.middle {
-	margin-right: 60px;
-}
-.bottom {
-	margin-top: 60px;
+img:nth-child(4n+1) {
+	margin-left: 0;
 }

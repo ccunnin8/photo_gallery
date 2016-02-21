@@ -2,40 +2,36 @@
 //********************************************************//
 $searchBox = $("input");
 $images = $("img");
-
+$container = $(".container")
 function showAllBoxes() {
 	$.each($images,function(index,value){
-			$(this).show();
+			$container.append($(this));
 		});
 }
 function searchEmpty(){
 	return ($searchBox.val() === "");
 }
-
+//Compare to alternative or caption of image 
 function imageSearch(expression,string) {
 	return expression.test(string);
 }
 $searchBox.keyup(function(){
+	//Get information from search box
 	var textInSearchBox = $searchBox.val();
 	var tester = new RegExp(textInSearchBox,"g");
 	for (var i = 0; i < $images.length; i++ ){ 
+		//if search value = alt/caption of image 
 		if (imageSearch(tester,$images[i].alt) && $searchBox.val() !== "" ) {
 			$($images[i]).show();
 		}
 		else {
-			$($images[i]).hide();
+			$($images[i]).remove();
 		}
 	}
 	if (searchEmpty()){
 		showAllBoxes();
 	}
 });
-//Get information from search box
-//Compare to alternative or caption of image 
-//if search value = alt/caption of image 
-//show image
-//else hide all other none matching images 
-
 
 //PHOTOVIEWER 
 
