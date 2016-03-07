@@ -34,8 +34,15 @@ $searchBox.keyup(function(){
 });
 
 //PHOTOVIEWER 
-
+//When user clicks on thumbnail
+$("img").click(function(){
+	$container.append("<div class='large-image'></div>");
+});
+$("input").click(function(){
+	$(".large-image").hide();
+})
 //When user clicks on thumbnail
 //Large image appears on screen with caption
-//All other images are not visible
+//background turns gray
+//All other images are not visible and are gray boxes 
 //User can scroll to other images using left and right arrows 

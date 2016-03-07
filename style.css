@@ -8,6 +8,7 @@ input {
 .container {
 	width: 980px;
 	margin: 0 auto;
+	position: relative;
 }
 img {
 	display: block;
@@ -22,4 +23,13 @@ img:first-child {
 }
 img:nth-child(4n+1) {
 	margin-left: 0;
+}
+.large-image {
+	position: absolute;
+	left: 50px;
+	top: 5px;
+	width: 850px;
+	height: 600px;
+	background-color: gray;
+	z-index: 200;
 }
