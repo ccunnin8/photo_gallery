@@ -2,11 +2,13 @@
 //********************************************************//
 $searchBox = $("input");
 $images = $("img");
-$container = $(".container")
+$container = $(".container");
+
 function showAllBoxes() {
 	$.each($images,function(index,value){
-			$container.append($(this));
-		});
+		var $new_image = $("<div class='thumbnail'></div>").append($(this));
+		$container.append($new_image);
+	});
 }
 function searchEmpty(){
 	return ($searchBox.val() === "");
@@ -22,27 +24,52 @@ $searchBox.keyup(function(){
 	for (var i = 0; i < $images.length; i++ ){ 
 		//if search value = alt/caption of image 
 		if (imageSearch(tester,$images[i].alt) && $searchBox.val() !== "" ) {
-			$($images[i]).show();
+			$($images[i]).parent().show();
 		}
 		else {
-			$($images[i]).remove();
+			$($images[i]).parent().remove();
 		}
 	}
 	if (searchEmpty()){
 		showAllBoxes();
 	}
+	$(".small-img").on("click",clickOnThumbnail);
 });
 
+$(".small-img").on("click",clickOnThumbnail);
 //PHOTOVIEWER 
+///******////////////////////////
+
+function getPhotoUrl(thumbnail) {
+	var photo = thumbnail.attr("src");
+	var photo = photo.slice(17,photo.length);
+	 var bigger_photo = "Photos/" + photo;
+	 return bigger_photo;
+}
+//When user clicks on thumbnail large image shos
+function clickOnThumbnail() {
+	$photoBox.css("background","url(" + getPhotoUrl($(this)) + ") no-repeat");
+	$photoBox.css("background-size","contain");
+	$container.append($photoBox);
+	$("html").css("background","gray");
+	//All other images are not visible
+	$(".thumbnail").addClass("greyed-out");
+	$(".small-img").hide();
+}
+
+$photoBox = $("<div class='large-img'></div>");
+$(".thumbnail").on("click",clickOnThumbnail);
 //When user clicks on thumbnail
-$("img").click(function(){
-	$container.append("<div class='large-image'></div>");
+$(document).mouseup(function(e) {
+	if (!$photoBox.is(e.target) && $photoBox.has(e.target).length === 0) {
+		$photoBox.remove();
+		$("html").css("background","white");
+		$("img").removeClass("greyed-out");
+		$('.small-img').show();
+	}
 });
-$("input").click(function(){
-	$(".large-image").hide();
-})
-//When user clicks on thumbnail
-//Large image appears on screen with caption
-//background turns gray
-//All other images are not visible and are gray boxes 
+
 //User can scroll to other images using left and right arrows 
+
+
+

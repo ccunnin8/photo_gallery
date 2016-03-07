@@ -10,26 +10,50 @@ input {
 	margin: 0 auto;
 	position: relative;
 }
-img {
-	display: block;
-	float: left;
+.greyed-out {
+	background-image: none;
+	background-color:darkgray;
+	z-index: 20;
 }
 img {
+	width:100%;
+}
+.thumbnail {
+	display: block;
+	height: 200px;
+	width: 200px;
+	float: left;
+}
+.thumbnail {
 	margin-bottom: 60px;
 	margin-left: 60px;
 }
-img:first-child {
+.thumbnail:first-child {
 	margin-left: 0;
 }
-img:nth-child(4n+1) {
+.thumbnail:nth-child(4n+1) {
 	margin-left: 0;
 }
-.large-image {
+.large-img {
 	position: absolute;
-	left: 50px;
-	top: 5px;
-	width: 850px;
-	height: 600px;
-	background-color: gray;
-	z-index: 200;
+	left:30px;
+	top:5px;
+	width: 920px;
+	height:600px;
+}
+.large-img:before {
+ content: "<";
+ color: white;
+ font-size: 60px;
+ position:absolute;
+ top:270px;
+ left: -120px;
+}
+.large-img:after { 
+content: ">";
+color: white;
+font-size:60px;
+position:absolute;
+top:270px;
+right:-120px;
 }
