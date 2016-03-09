@@ -40,20 +40,29 @@ img {
 	top:5px;
 	width: 920px;
 	height:600px;
+	background-size: contain;
 }
-.large-img:before {
- content: "<";
+.left-click {
  color: white;
  font-size: 60px;
  position:absolute;
  top:270px;
  left: -120px;
 }
-.large-img:after { 
-content: ">";
+.right-click { 
 color: white;
 font-size:60px;
 position:absolute;
 top:270px;
 right:-120px;
+}
+.caption {
+	width:600px;
+	display: block;
+	font-size: 1.25em;
+	line-height: 1.5em;
+	margin: 0 auto;
+	position: relative;
+	top: -150px;
+	color: white;
 }
